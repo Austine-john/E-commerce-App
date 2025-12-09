@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './context/CartContext';
-import { ProductProvider } from './context/ProductContext';
+import { AuthProvider } from './Context/AuthContext';
+import { CartProvider } from './Context/CartContext';
+import { ProductProvider } from './Context/ProductContext';
 import { Navbar } from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Shop from './Pages/Shop';
