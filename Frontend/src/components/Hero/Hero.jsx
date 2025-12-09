@@ -1,29 +1,27 @@
-import hand_icon from "../Assets/hand_icon.png"
-import arrow_icon from "../Assets/arrow.png"
-import hero_image from "../Assets/hero_image.png"
-import "./Hero.css"
-export default function Hero(){
-    return(
-        <div className="hero">
-            <div className="hero-left">
-                <h2>NEW ARRIVALS ONLY</h2>
-            <div>
-            <div className="hero-hand-icon">
-                <p>new</p>
-                <img src = {hand_icon} alt = 'hand-icon'/>
-            </div>
-            <p>collections</p>
-            <p>for everyone</p>
-            </div>
-            <div className="hero-latest-btn">
-                <div>latest collection</div>
-                <img src = {arrow_icon} alt="arrow-icon"/>
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Hero.css';
 
+export default function Hero() {
+    return (
+        <div className="hero">
+            <div className="hero-overlay">
+                <div className="container">
+                    <div className="hero-content">
+                        <h1 className="hero-title">
+                            Glow Up! 20% Off All Makeup
+                        </h1>
+                        <p className="hero-subtitle">
+                            Discover our latest collection of premium makeup products, proudly Kenyan.
+                            <br />
+                            Unleash your inner beauty with shades that celebrate you.
+                        </p>
+                        <Link to="/makeup" className="hero-btn">
+                            Shop Now
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
-            <div className="hero-right">
-                <img src = {hero_image} alt = 'hero-image'/>
-            </div>
-        </div>
-    )
+    );
 }

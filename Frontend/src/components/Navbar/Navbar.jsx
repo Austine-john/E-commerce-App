@@ -1,32 +1,80 @@
-import React from 'react'
-import { useState } from 'react'
-import './Navbar.css'
-import logo from '../Assets/logo.png'
-import cart_icon from '../Assets/cart_icon.png'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiShoppingCart, FiUser, FiSearch } from 'react-icons/fi';
+import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
+import './Navbar.css';
+
 export const Navbar = () => {
+  const [activeMenu, setActiveMenu] = useState('home');
+  const { user, logout, isAuthenticated } = useAuth();
+  const { cartItemCount } = useCart();
 
-  const [menu, setMenu] = useState("Shop");
   return (
-    <div className='navbar'>
-        <div className='nav-logo'>
-            <img src={logo} alt="logo" />
-            <p>SHOPPER</p>
+    <nav className="navbar">
+      <div className="container">
+        <div className="navbar-content">
+          {/* Logo */}
+          <Link to="/" className="navbar-logo" onClick={() => setActiveMenu('home')}>
+            <span className="logo-icon">🛍️</span>
+            <span className="logo-text">AfroChic</span>
+          </Link>
+
+          {/* Navigation Links */}
+          <ul className="nav-menu">
+            <li className={activeMenu === 'home' ? 'active' : ''}>
+              <Link to="/" onClick={() => setActiveMenu('home')}>Home</Link>
+            </li>
+            <li className={activeMenu === 'makeup' ? 'active' : ''}>
+              <Link to="/makeup" onClick={() => setActiveMenu('makeup')}>Makeup</Link>
+            </li>
+            <li className={activeMenu === 'accessories' ? 'active' : ''}>
+              <Link to="/mobile-accessories" onClick={() => setActiveMenu('accessories')}>
+                Mobile Accessories
+              </Link>
+            </li>
+            <li className={activeMenu === 'clothes' ? 'active' : ''}>
+              <Link to="/shoes-clothes" onClick={() => setActiveMenu('clothes')}>
+                Shoes & Clothes
+              </Link>
+            </li>
+          </ul>
+
+          {/* Right Side Actions */}
+          <div className="navbar-actions">
+            {/* Search Icon */}
+            <button className="icon-btn" aria-label="Search">
+              <FiSearch size={20} />
+            </button>
+
+            {/* Cart */}
+            <Link to="/cart" className="cart-btn">
+              <FiShoppingCart size={20} />
+              {cartItemCount > 0 && (
+                <span className="cart-badge">{cartItemCount}</span>
+              )}
+            </Link>
+
+            {/* User Menu */}
+            {isAuthenticated ? (
+              <div className="user-menu">
+                <button className="icon-btn">
+                  <FiUser size={20} />
+                </button>
+                <div className="user-dropdown">
+                  <p className="user-name">{user?.full_name}</p>
+                  <Link to="/orders">My Orders</Link>
+                  <button onClick={logout}>Logout</button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login" className="btn-login">
+                Login
+              </Link>
+            )}
+          </div>
         </div>
-
-        <ul className='nav-menu'>
-            <li onClick={() => {setMenu("Shop")}}><Link style={{textDecoration:"none"}} to = '/'>Shop</Link>{menu ==='Shop' ? <hr/>:<></>}</li>
-            <li onClick={() => {setMenu("Accessories")}}><Link style={{textDecoration:"none"}} to = '/Accessories'>Accessories</Link>{menu ==='Accessories' ? <hr/>:<></>}</li>
-            <li onClick={() => {setMenu("Makeup")}}><Link style={{textDecoration:"none"}} to = '/Makeup'>Make up</Link>{menu ==='Makeup' ? <hr/>:<></>}</li>
-            <li onClick={() => {setMenu("Clothes")}}><Link style={{textDecoration:"none"}} to = '/Clothes'>Clothes</Link>{menu ==='Clothes' ? <hr/>:<></>}</li>
-        </ul>
-        <div className='nav-login-cart'>
-            <Link to = '/login'><button>Login</button></Link>
-            <Link to = '/cart'><img src={cart_icon} alt="cart_icon" /></Link>
-            <div className="nav-cart-count">0</div>
-
-        </div>
-    </div>
-  )
-}
-
+      </div>
+    </nav>
+  );
+};
