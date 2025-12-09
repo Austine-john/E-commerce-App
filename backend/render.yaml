@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: ecommerce-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn -c gunicorn_config.py app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URI
+        fromDatabase:
+          name: ecommerce-db
+          property: connectionString
+      - key: FLASK_ENV
+        value: production
+
+databases:
+  - name: ecommerce-db
+    databaseName: ecommerce
+    user: ecommerce_user
+    plan: free
