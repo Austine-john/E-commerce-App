@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Hero from '../components/Hero/Hero';
 import CategoryCard from '../components/CategoryCard/CategoryCard';
 import ProductCard from '../components/ProductCard/ProductCard';
-import { useProducts } from '../context/ProductContext';
+import { useProducts } from '../Context/ProductContext';
 import './Shop.css';
 
 export default function Shop() {

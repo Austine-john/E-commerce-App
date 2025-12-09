@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiHeart } from 'react-icons/fi';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../Context/CartContext';
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {

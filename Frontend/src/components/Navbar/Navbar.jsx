@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiShoppingCart, FiUser, FiSearch } from 'react-icons/fi';
-import { useAuth } from '../../context/AuthContext';
-import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../Context/AuthContext';
+import { useCart } from '../../Context/CartContext';
 import './Navbar.css';
 
 export const Navbar = () => {

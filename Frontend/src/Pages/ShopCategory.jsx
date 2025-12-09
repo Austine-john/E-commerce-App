@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useProducts } from '../context/ProductContext';
+import { useProducts } from '../Context/ProductContext';
 import ProductCard from '../components/ProductCard/ProductCard';
 import './ShopCategory.css';
 

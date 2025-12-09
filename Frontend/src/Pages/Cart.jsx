@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiTrash2, FiShoppingBag } from 'react-icons/fi';
-import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
+import { useCart } from '../Context/CartContext';
+import { useAuth } from '../Context/AuthContext';
 import './Cart.css';
 
 export default function Cart() {

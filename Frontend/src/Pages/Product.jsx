@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FiShoppingCart, FiShield, FiTruck, FiCheckCircle } from 'react-icons/fi';
-import { useProducts } from '../context/ProductContext';
-import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
+import { useProducts } from '../Context/ProductContext';
+import { useCart } from '../Context/CartContext';
+import { useAuth } from '../Context/AuthContext';
 import ProductCard from '../components/ProductCard/ProductCard';
 import './Product.css';
 
