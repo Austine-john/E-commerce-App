@@ -144,8 +144,7 @@ The M-Pesa integration is currently a **placeholder implementation** for develop
 
 ## Development Notes
 
-- The backend uses SQLite for development. For production, consider PostgreSQL or MySQL.
-- JWT tokens are stored in localStorage on the frontend.
+- The backend uses SQLite for development. 
 - Cart data is persisted in the database for logged-in users.
 - The design follows the AfroChic brand with orange accent colors (#FF8C00).
 
