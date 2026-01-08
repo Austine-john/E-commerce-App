@@ -20,7 +20,12 @@ def create_app(config_class=Config):
     
     # Initialize extensions
     db.init_app(app)
-    CORS(app, origins=app.config['CORS_ORIGINS'])
+    CORS(
+        app,
+        origins=app.config.get('CORS_ORIGINS', "*"),  # list of allowed origins or '*' for all
+        supports_credentials=True,                    # allows cookies, auth headers
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    )
     JWTManager(app)
     
     # Initialize M-Pesa service

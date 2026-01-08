@@ -26,4 +26,12 @@ class Config:
     MPESA_ENVIRONMENT = os.getenv('MPESA_ENVIRONMENT', 'sandbox')
     
     # CORS
-    CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000').split(',')
+    #CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000').split(',')
+    # CORS
+CORS_ORIGINS = os.getenv(
+    'CORS_ORIGINS',
+    'http://localhost:5173,http://localhost:3000,https://e-commerce-app-bf1o.vercel.app'
+).split(',')
+
+
+    
